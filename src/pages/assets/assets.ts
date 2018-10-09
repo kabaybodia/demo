@@ -9,10 +9,7 @@ import { ServicesProvider } from '../../providers/services/services';
  * Ionic pages and navigation.
  */
 
-@IonicPage({
-	name: "assets",
-	segment: "assets"
-})
+@IonicPage()
 @Component({
   selector: 'page-assets',
   templateUrl: 'assets.html',
@@ -20,7 +17,9 @@ import { ServicesProvider } from '../../providers/services/services';
 export class AssetsPage {
 
 	contentButtons = "My Assets";
+	typeOfInvestmentButtons: string = "All";
 	assetsData;
+	private filteredAssetsData: any;
 	loadingDefault;
 
   constructor(public navCtrl: NavController, 
@@ -31,9 +30,9 @@ export class AssetsPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AssetsPage');
     this.sProvider.getAssetsData().then(data=>{
     	this.assetsData = data;
+    	this.filteredAssetsData = this.assetsData.filter(e=>e.type===this.typeOfInvestmentButtons || this.typeOfInvestmentButtons  === "All");
     	this.loadingDefault.dismiss();
     });
   }
@@ -43,6 +42,15 @@ export class AssetsPage {
 	    content: 'Please wait...'
 	  });
 	  this.loadingDefault.present();
+	}
+
+	assetsSegmentChanged(event) {
+		// console.log(event)
+	}
+
+	typeOfInvestmentSegmentChanged(event) {
+		console.log(event);
+		this.filteredAssetsData = this.assetsData.filter(e=>e.type===event.value || event.value === "All");
 	}
 
 }

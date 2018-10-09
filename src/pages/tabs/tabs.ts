@@ -7,20 +7,23 @@ import { AssetsPage } from '../assets/assets';
 import { PaymentPage } from '../payment/payment';
 
 @IonicPage({
-	name: "",
-	segment: ""
+  segment: 't'
 })
 @Component({
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
-	
+	activeTab: any = 0;
   tab1Root = HomePage;
   tab2Root = SpendingPage;
   tab3Root = AssetsPage;
   tab4Root = PaymentPage;
 
-  constructor() {
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+  }
+
+  ionViewDidLeave() {
 
   }
 }

@@ -22,6 +22,13 @@ export class ServicesProvider {
   		  			amount: 403.20,
   		  			units: '£'
   		  		},
+            ,
+            {
+              type: "P2P",
+              nameOfInvestment: "some P2P envestment",
+              amount: 454.20,
+              units: '£'
+            },
   		  		{
   		  			type: "Savings",
   		  			nameOfInvestment: "name of invs	",
