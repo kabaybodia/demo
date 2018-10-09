@@ -4,9 +4,9 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<ion-header class="wp">
 
-  <ion-navbar>
+  <ion-navbar class="wp">
   	<ion-buttons start>
   		<button ion-button>Logo</button>
   	</ion-buttons>
@@ -20,8 +20,32 @@
 
 
 <ion-content padding>
-	<ion-segment>
+	<ion-segment [(ngModel)]="contentButtons">
 		<ion-segment-button value="My Assets">My Assets</ion-segment-button>
 		<ion-segment-button value="Opportunities">Opportunities</ion-segment-button>
 	</ion-segment>
+	<ion-card>
+		<p>+3%</p>
+		<p>Earning balance</p>
+		<p>1,004.23</p>
+	</ion-card>
+	<ion-segment color="primary">
+		<ion-segment-button value="All">
+			All
+		</ion-segment-button>
+		<ion-segment-button value="Savings">
+			Savings
+		</ion-segment-button>
+		<ion-segment-button value="P2P">
+			P2P
+		</ion-segment-button>	
+		<ion-segment-button value="Funds">
+			Funds
+		</ion-segment-button>
+	</ion-segment>
+	<ion-list *ngIf="assetsData">
+		<ion-item *ngFor="let asset of assetsData">
+			<h2>{{asset.type}}</h2>
+		</ion-item>
+	</ion-list>
 </ion-content>
