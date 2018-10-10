@@ -13,7 +13,6 @@ import { PaymentPage } from '../payment/payment';
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
-	activeTab: any = 0;
   tab1Root = HomePage;
   tab2Root = SpendingPage;
   tab3Root = AssetsPage;
@@ -25,5 +24,9 @@ export class TabsPage {
 
   ionViewDidLeave() {
 
+  }
+  onTabChange(event) {
+    // event.parent.goToRoot();  
+    console.log(event);
   }
 }

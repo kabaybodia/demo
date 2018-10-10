@@ -9,7 +9,9 @@ import { ServicesProvider } from '../../providers/services/services';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+@IonicPage({
+	segment: "assets/:assetsInx/:investmentTypeInx"
+})
 @Component({
   selector: 'page-assets',
   templateUrl: 'assets.html',
@@ -26,6 +28,14 @@ export class AssetsPage {
   	public navParams: NavParams,	
   	private loadingCtrl: LoadingController,
   	private sProvider: ServicesProvider) {
+  	let aInx = parseInt(navParams.get("assetsInx"))||0;
+  	let iInx = parseInt(navParams.get("investmentTypeInx"))||0;
+  	aInx = Math.max(0,aInx);
+  	aInx = Math.min(1,aInx);
+  	iInx = Math.max(0,iInx);
+  	iInx = Math.min(3,iInx);
+   	this.contentButtons = ["My Assets", "Opportunities"][aInx];
+  	this.typeOfInvestmentButtons = ["All", "Savings", "P2P", "Funds"][iInx];
   	this.presentLoadingDefault()
   }
 

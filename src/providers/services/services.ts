@@ -25,7 +25,7 @@ export class ServicesProvider {
             ,
             {
               type: "P2P",
-              nameOfInvestment: "some P2P envestment",
+              nameOfInvestment: "some P2P investment",
               amount: 454.20,
               units: '£'
             },
